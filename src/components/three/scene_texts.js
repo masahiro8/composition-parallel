@@ -1,10 +1,6 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 
-const rotationToRadian = (r) => {
-  return (r / 180) * Math.PI;
-};
-
 export const SceneTexts = () => {
   let scene;
   let camera;
@@ -26,8 +22,8 @@ export const SceneTexts = () => {
   };
 
   const initAsync = async ({ canvasId, width, height }) => {
-    return new Promise(async (resolve) => {
-      await fontLoad();
+    return new Promise((resolve) => {
+      fontLoad();
 
       scene = new THREE.Scene();
       renderer = new THREE.WebGLRenderer();
@@ -80,7 +76,7 @@ export const SceneTexts = () => {
       color,
       transparent: true,
       opacity: 0.7,
-      side: THREE.DoubleSide
+      side: THREE.DoubleSide,
     });
 
     const shapes = _font.generateShapes(message, size);
@@ -132,6 +128,6 @@ export const SceneTexts = () => {
     initAsync,
     setOrbitCont,
     addText,
-    clearItems
+    clearItems,
   };
 };

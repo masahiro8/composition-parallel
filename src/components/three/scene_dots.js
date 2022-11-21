@@ -4,10 +4,6 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 // 半球
 // https://threejs.org/docs/#api/en/geometries/SphereGeometry
 
-const rotationToRadian = (r) => {
-  return (r / 180) * Math.PI;
-};
-
 export const SceneDots = () => {
   let scene;
   let camera;
@@ -68,13 +64,13 @@ export const SceneDots = () => {
     radius,
     segments,
     position,
-    color = [255, 255, 255]
+    color = [255, 255, 255],
   }) => {
     const mesh = new THREE.Mesh(
       // new THREE.CylinderGeometry(10, 10, 1, 32),
       new THREE.SphereGeometry(radius, segments, segments),
       new THREE.MeshBasicMaterial({
-        color: rgb2hex(color)
+        color: rgb2hex(color),
       })
     );
 
@@ -88,7 +84,7 @@ export const SceneDots = () => {
 
   const drawDots = (deg) => {
     const vertices = [];
-    //　座標
+    //座標
     for (let i = 0; i < dotsConfigs.length; i++) {
       const { r, deg_x, deg_y, deg_z } = dotsConfigs[i];
       const x = r * Math.cos((deg_x + deg) * (Math.PI / 180));
@@ -106,7 +102,7 @@ export const SceneDots = () => {
     // マテリアルを作成
     const material = new THREE.PointsMaterial({
       size: 1,
-      color: rgb2hex([200, 200, 200])
+      color: rgb2hex([200, 200, 200]),
     });
 
     // 物体を作成
@@ -115,7 +111,7 @@ export const SceneDots = () => {
     scene.add(mesh);
   };
 
-  const initDots = ({ size = 1000, length = 1000 }) => {
+  const initDots = ({ length = 1000 }) => {
     const maxR = 300; //最大半径
 
     for (let i = 0; i < length; i++) {
@@ -154,6 +150,6 @@ export const SceneDots = () => {
     initDots,
     drawDots,
     clearDots,
-    setOrbitCont
+    setOrbitCont,
   };
 };

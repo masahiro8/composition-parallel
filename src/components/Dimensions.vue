@@ -82,20 +82,6 @@ export default {
       }
     );
   },
-  methods: {
-    scrollOnAnimation({ scroll, diff }) {
-      const onPlay = () => {};
-      onPlay();
-    },
-  },
 };
 </script>
-<style lang="scss" scoped>
-#three_lines {
-  position: relative;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-}
-</style>
+<style scoped></style>

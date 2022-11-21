@@ -5,7 +5,7 @@ const sum = (vec1, vec2) => {
   return {
     x: vec1.x + vec2.x,
     y: vec1.y + vec2.y,
-    z: vec1.z + vec2.z
+    z: vec1.z + vec2.z,
   };
 };
 
@@ -81,12 +81,12 @@ export const SceneDimensions = () => {
       color,
       transparent: true,
       opacity: 0.7,
-      side: THREE.DoubleSide
+      side: THREE.DoubleSide,
     });
 
     const materialLine = new THREE.LineBasicMaterial({
       color: lineColor,
-      linewidth: 1
+      linewidth: 1,
     });
 
     const w = Math.random() * 200 - 100;
@@ -118,7 +118,7 @@ export const SceneDimensions = () => {
       points: { a, b, c, d },
       material,
       materialLine,
-      center
+      center,
     });
   };
 
@@ -126,7 +126,7 @@ export const SceneDimensions = () => {
     const deg = _deg;
 
     // 頂点から3角ポリゴンに変換
-    datas.forEach(({ index, r, points, center, material, materialLine }) => {
+    datas.forEach(({ r, points, center, material, materialLine }) => {
       const rx = r * Math.cos(deg * (Math.PI / 180)) + center.x;
       const rz = r * Math.tan(deg * (Math.PI / 180)) + center.z;
       const rotate = { x: rx, y: 0, z: rz };
@@ -161,11 +161,11 @@ export const SceneDimensions = () => {
 
   const addLine = ({ point, dir, length, center, color, max }) => {
     const material = new THREE.LineBasicMaterial({
-      color
+      color,
     });
     const nPoints = [
       new THREE.Vector3(point.x, point.y, point.z),
-      new THREE.Vector3(point.x, point.y, point.z + length)
+      new THREE.Vector3(point.x, point.y, point.z + length),
     ];
     const _points = nPoints.map((point) => {
       return new THREE.Vector3(point.x, point.y, point.z);
@@ -225,6 +225,6 @@ export const SceneDimensions = () => {
     drawDimension,
     addLine,
     drawLine,
-    clear
+    clear,
   };
 };

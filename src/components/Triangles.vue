@@ -85,7 +85,7 @@ export default {
   },
 };
 </script>
-<style lang="scss" scoped>
+<style scoped>
 #three_lines {
   position: relative;
   top: 0;

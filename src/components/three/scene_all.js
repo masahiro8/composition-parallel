@@ -15,7 +15,6 @@ export const SceneDots = () => {
   let hemiLight;
   let renderer;
   let orbitControls;
-  let arrowModel;
   let arrows = [];
   let arrowTarget = null;
   let targetSliderValue = 0;
@@ -76,7 +75,7 @@ export const SceneDots = () => {
       // new THREE.CylinderGeometry(10, 10, 1, 32),
       new THREE.SphereGeometry(2, 12, 12),
       new THREE.MeshBasicMaterial({
-        color: 0xff0000
+        color: 0xff0000,
       })
     );
 
@@ -91,13 +90,13 @@ export const SceneDots = () => {
     radius,
     segments,
     position,
-    color = [255, 255, 255]
+    color = [255, 255, 255],
   }) => {
     const mesh = new THREE.Mesh(
       // new THREE.CylinderGeometry(10, 10, 1, 32),
       new THREE.SphereGeometry(radius, segments, segments),
       new THREE.MeshBasicMaterial({
-        color: rgb2hex(color)
+        color: rgb2hex(color),
       })
     );
 
@@ -128,7 +127,7 @@ export const SceneDots = () => {
     // マテリアルを作成
     const material = new THREE.PointsMaterial({
       size: 5,
-      color: rgb2hex([255, 0, 0])
+      color: rgb2hex([255, 0, 0]),
     });
 
     // 物体を作成
@@ -136,19 +135,10 @@ export const SceneDots = () => {
     scene.add(mesh);
   };
 
-  const loadGLTF = (url) => {
-    const gltfLoader = new GLTFLoader();
-    gltfLoader.load(url, function (data) {
-      const gltf = data;
-      const object = gltf.scene;
-      arrowModel = object;
-    });
-  };
-
   const addGLTF = ({
     position = { x: 0, y: 0, z: 0 },
     rotation = { x: 0, y: 0, z: 0 },
-    scale = { x: 0.5, y: 0.5, z: 0.5 }
+    scale = { x: 0.5, y: 0.5, z: 0.5 },
   }) => {
     const gltfLoader = new GLTFLoader();
     gltfLoader.load("/data/arrow.glb", function (data) {
@@ -184,7 +174,7 @@ export const SceneDots = () => {
       color: 0xff8800,
       // wireframe: true,
       transparent: true,
-      opacity: 0.1
+      opacity: 0.1,
     });
     const mesh = new THREE.Mesh(geometry, material);
     let obj = new THREE.Object3D();
@@ -195,7 +185,7 @@ export const SceneDots = () => {
   };
 
   // 矢印の方向を設定
-  const setArrowsLookat = (vec) => {
+  const setArrowsLookat = () => {
     //ターゲット座標を更新
     const rx = 100 * Math.cos(targetSliderValue * (Math.PI / 180));
     const ry = 100 * Math.sin(targetSliderValue * (Math.PI / 180));
@@ -237,12 +227,11 @@ export const SceneDots = () => {
   return {
     init,
     addPoint,
-    addDots,
     addGLTF,
     setOrbitCont,
     setArrowsLookat,
     addArrowTarget,
     setTargetRotate,
-    addHalfSphare
+    addHalfSphare,
   };
 };

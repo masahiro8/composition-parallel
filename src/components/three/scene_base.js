@@ -74,12 +74,12 @@ export const Scene = () => {
   const addLine = ({ w, point, dir, length, center, color }) => {
     const material = new THREE.LineBasicMaterial({
       color,
-      linewidth: w
+      linewidth: w,
     });
 
     const nPoints = [
       new THREE.Vector3(point.x, point.y, point.z),
-      new THREE.Vector3(point.x + length, point.y, point.z)
+      new THREE.Vector3(point.x + length, point.y, point.z),
     ];
     const _points = nPoints.map((point) => {
       return new THREE.Vector3(point.x, point.y, point.z);
@@ -95,7 +95,7 @@ export const Scene = () => {
     // 回転
     line.rotation.set(0, rotationToRadian(dir), 0);
   };
-  
+
   const clearLines = () => {
     lines.forEach((line) => {
       scene.remove(line);
@@ -108,6 +108,6 @@ export const Scene = () => {
     init,
     setOrbitCont,
     addLine,
-    clearLines
+    clearLines,
   };
 };
